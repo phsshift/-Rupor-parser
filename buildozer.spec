@@ -1,23 +1,34 @@
 [app]
 title = Rupor Events
 package.name = ruporevents
-package.domain = org.phase.shift
+package.domain = org.phaseshift
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,txt,md
 version = 0.1
 requirements = python3,kivy,requests,beautifulsoup4,certifi,urllib3,idna,charset-normalizer
 orientation = portrait
 fullscreen = 0
-android.permissions = INTERNET,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
+
+# Android permissions
+android.permissions = INTERNET
+
+# Fixed Android toolchain versions for GitHub Actions
 android.api = 35
 android.minapi = 23
+android.build_tools = 35.0.0
 android.ndk = 25b
 android.archs = arm64-v8a, armeabi-v7a
+
+# Use SDK/NDK installed by GitHub Actions instead of Buildozer-downloaded empty SDK
+android.sdk_path = /usr/local/lib/android/sdk
+android.ndk_path = /usr/local/lib/android/sdk/ndk/25.2.9519653
+
 android.allow_backup = True
-android.gradle_dependencies = 
-android.add_gradle_repositories = 
 android.enable_androidx = True
-p4a.branch = develop
+
+# Keep default python-for-android branch unless you need experimental fixes
+# p4a.branch = master
+
 log_level = 2
 warn_on_root = 1
 
